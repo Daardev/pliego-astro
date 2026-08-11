@@ -1,0 +1,57 @@
+---
+import { SERVICES } from "../../lib/services";
+import { unsplashUrl } from "../../lib/unsplash";
+
+import "./Services.css";
+---
+
+<script>
+  import "./Services.ts";
+</script>
+
+<section class="services" id="servicios">
+  <div class="services__inner">
+    <header class="services__header">
+      <span class="font-mono-label">Servicios — 01</span>
+      <h2 class="services__title font-display">
+        Lo que hago, en seis disciplinas que se cruzan.
+      </h2>
+    </header>
+
+    <ul class="services__list" role="list">
+      {SERVICES.map((service) => (
+        <li class="service" data-service data-open="false">
+          <button
+            class="service__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls={`service-body-${service.id}`}
+          >
+            <span class="service__number font-mono-label">{service.number}</span>
+            <span class="service__name font-display">{service.title}</span>
+            <span class="service__icon" aria-hidden="true">
+              <span class="service__icon-h"></span>
+              <span class="service__icon-v"></span>
+            </span>
+          </button>
+          <div
+            class="service__body"
+            id={`service-body-${service.id}`}
+            role="region"
+            aria-hidden="true"
+          >
+            <p>{service.description}</p>
+          </div>
+          <div class="service__preview" aria-hidden="true">
+            <img
+              src={unsplashUrl(service.previewImageId, { width: 600, height: 400, quality: 80 })}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+---
+import { ABOUT_IMAGE, unsplashUrl } from "../../lib/unsplash";
+
+import "./About.css";
+
+const portrait = unsplashUrl(ABOUT_IMAGE, { width: 900, quality: 85 });
+
+interface Stat {
+  value: number;
+  suffix?: string;
+  label: string;
+}
+
+const stats: Stat[] = [
+  { value: 7, suffix: "+", label: "Años diseñando" },
+  { value: 84, label: "Proyectos entregados" },
+  { value: 23, label: "Clientes editoriales" },
+  { value: 5, suffix: ".0", label: "Valoración media" },
+];
+---
+
+<script>
+  import "./About.ts";
+</script>
+
+<section class="about" id="sobre">
+  <div class="about__inner">
+    <div class="about__intro">
+      <span class="font-mono-label">Sobre — 02</span>
+      <h2 class="about__statement font-display" data-split-statement>
+        Pliego es un estudio de una persona. Diseño identidades, libros y sistemas
+        editoriales con la convicción de que el trabajo bien hecho dura más que la
+        tendencia que lo inspiró.
+      </h2>
+    </div>
+
+    <figure class="about__portrait">
+      <img src={portrait} alt="Manos trabajando sobre bocetos en un escritorio" loading="lazy" decoding="async" />
+      <figcaption class="font-mono-label">
+        Mesa de trabajo · Santiago
+      </figcaption>
+    </figure>
+
+    <dl class="about__stats">
+      {stats.map((stat) => (
+        <div class="stat">
+          <dt class="stat__value font-display" data-stat-value data-target={stat.value} data-suffix={stat.suffix ?? ""}>
+            0{stat.suffix ?? ""}
+          </dt>
+          <dd class="stat__label">{stat.label}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="about__signature">
+      <span class="font-mono-label">Firmado</span>
+      <span class="about__signature-name font-display">— Pliego</span>
+    </div>
+  </div>
+</section>

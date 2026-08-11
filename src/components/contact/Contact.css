@@ -1,0 +1,133 @@
+.contact {
+  padding: clamp(5rem, 12vw, 9rem) 1.5rem clamp(3rem, 8vw, 5rem);
+  background-color: var(--color-paper-2);
+  border-top: 1px solid var(--color-rule);
+}
+
+.contact__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact__label {
+  color: var(--color-ink-3);
+}
+
+.contact__title {
+  margin: 1rem 0 3rem;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  color: var(--color-ink);
+  max-width: 16ch;
+  text-wrap: balance;
+  font-weight: 400;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact__image {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+}
+
+.contact__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.contact__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  color: var(--color-ink-3);
+}
+
+.field input,
+.field textarea {
+  border: none;
+  border-bottom: 1px solid var(--color-ink);
+  background: transparent;
+  padding: 0.5rem 0;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-ink);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-ink-3);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.field--actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact__submit {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  border: none;
+  padding: 0.85rem 1.75rem;
+  font: inherit;
+  font-size: 0.9375rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.contact__submit:hover {
+  background-color: var(--color-ink-2);
+}
+
+.contact__alt {
+  color: var(--color-ink-2);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.contact__alt:hover {
+  color: var(--color-ink);
+}
+
+@media (max-width: 768px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact__form {
+    grid-template-columns: 1fr;
+  }
+}

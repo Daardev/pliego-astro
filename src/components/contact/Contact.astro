@@ -1,0 +1,98 @@
+---
+import { unsplashUrl } from "../../lib/unsplash";
+
+import "./Contact.css";
+
+const portrait = unsplashUrl("1493421419110-74f4e85ba126", {
+  width: 1200,
+  quality: 85,
+});
+---
+
+<script>
+  import "./Contact.ts";
+</script>
+
+<section class="contact" id="contacto">
+  <div class="contact__inner">
+    <span class="font-mono-label contact__label">Contacto — 04</span>
+
+    <h2 class="contact__title font-display" data-split-title>
+      ¿Tienes algo en mente? Hablemos.
+    </h2>
+
+    <div class="contact__grid">
+      <figure class="contact__image">
+        <img
+          src={portrait}
+          alt="Manos trabajando en bocetos de papel"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <form
+        action="https://formsubmit.co/darwingmunoza@gmail.com"
+        method="POST"
+        class="contact__form"
+        target="_blank"
+      >
+        <div class="field">
+          <label for="name" class="font-mono-label">Nombre</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="email" class="font-mono-label">Correo</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="field field--full">
+          <label for="subject" class="font-mono-label">Asunto</label>
+          <input id="subject" name="subject" type="text" />
+        </div>
+
+        <div class="field field--full">
+          <label for="message" class="font-mono-label">Mensaje</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div class="field field--full field--actions">
+          <button type="submit" class="contact__submit">Enviar mensaje</button>
+          <a
+            href="mailto:hola@pliego.studio"
+            class="contact__alt font-mono-label"
+          >
+            o escribe a hola@pliego.studio →
+          </a>
+        </div>
+        <input
+          type="hidden"
+          name="_subject"
+          value="Nuevo mensaje desde pliego.studio"
+        />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input
+          type="text"
+          name="_honey"
+          style="display:none"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </form>
+    </div>
+  </div>
+</section>

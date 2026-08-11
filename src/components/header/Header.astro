@@ -1,0 +1,33 @@
+---
+import "./Header.css";
+
+const navLinks = [
+  { href: "#servicios", label: "Servicios" },
+  { href: "#trabajos", label: "Trabajos" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href={import.meta.env.BASE_URL} class="site-header__logo font-display" aria-label="Pliego, inicio">
+      Pliego
+    </a>
+
+    <nav class="site-header__nav" aria-label="Navegación principal">
+      <ul>
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <span class="site-header__meta font-mono-label">Santiago, CL</span>
+      <a href="#contacto" class="site-header__cta">Hablemos</a>
+    </div>
+  </div>
+</header>

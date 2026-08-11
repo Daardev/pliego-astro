@@ -1,0 +1,59 @@
+---
+import "./Footer.css";
+
+const social = [
+  { label: "Instagram", href: "https://instagram.com/pliego.studio" },
+  { label: "Behance", href: "https://behance.net/pliego" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/pliego" },
+];
+
+const nav = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Trabajos", href: "#trabajos" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Contacto", href: "#contacto" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <a href="#top" class="footer__logo font-display" aria-label="Volver al inicio">
+      Pliego
+    </a>
+
+    <div class="footer__columns">
+      <div class="footer__col">
+        <span class="font-mono-label">Navegación</span>
+        <ul>
+          {nav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <span class="font-mono-label">En otras partes</span>
+        <ul>
+          {social.map((item) => (
+            <li><a href={item.href} rel="noreferrer noopener" target="_blank">{item.label} ↗</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--contact">
+        <span class="font-mono-label">Escribir</span>
+        <a href="mailto:hola@pliego.studio" class="footer__mail font-display">
+          hola@pliego.studio
+        </a>
+        <p class="footer__address">Santiago, Chile</p>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span>© {year} Pliego — Todos los derechos reservados.</span>
+      <span class="font-mono-label">Diseñado en Santiago</span>
+    </div>
+  </div>
+</footer>

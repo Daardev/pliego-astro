@@ -1,0 +1,56 @@
+---
+import { PROJECTS } from "../../lib/portfolio";
+import { unsplashUrl } from "../../lib/unsplash";
+
+import "./Portfolio.css";
+---
+
+<script>
+  import "./Portfolio.ts";
+</script>
+
+<section class="portfolio" id="trabajos">
+  <div class="portfolio__inner">
+    <header class="portfolio__header">
+      <span class="font-mono-label">Trabajos — 03</span>
+      <h2 class="portfolio__title font-display">
+        Una selección de proyectos recientes.
+      </h2>
+      <p class="portfolio__lede">
+        Cada encargo es una pieza a medida. Estos son algunos de los últimos seis.
+      </p>
+    </header>
+
+    <ul class="portfolio__grid" role="list">
+      {PROJECTS.map((project, index) => (
+        <li
+          class={`project project--${project.size} project--${index % 2 === 0 ? "left" : "right"}`}
+          data-project
+        >
+          <a href={`#${project.id}`} class="project__link">
+            <figure class="project__media">
+              <img
+                src={unsplashUrl(project.imageId, { width: 1200, quality: 85 })}
+                alt={`${project.title} — ${project.category}`}
+                loading={index < 2 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <span class="project__index font-mono-label">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </figure>
+            <div class="project__meta">
+              <div>
+                <span class="font-mono-label project__category">{project.category}</span>
+                <h3 class="project__title font-display">{project.title}</h3>
+              </div>
+              <span class="font-mono-label project__year">{project.year}</span>
+            </div>
+            <p class="project__description">{project.description}</p>
+            <span class="project__cta font-mono-label">Ver caso →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

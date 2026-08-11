@@ -1,0 +1,267 @@
+.hero {
+  position: relative;
+  min-height: clamp(640px, 92svh, 1000px);
+  overflow: hidden;
+  padding: 2rem 1.5rem 4rem;
+  background-color: var(--color-paper);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-base);
+}
+
+.hero__layer {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hero__layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__layer--1 {
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+.hero__layer--2 {
+  top: 12%;
+  right: 2%;
+  width: clamp(240px, 28%, 400px);
+  aspect-ratio: 4 / 3;
+  mix-blend-mode: multiply;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+  z-index: var(--z-media);
+  opacity: 0.92;
+}
+
+.hero__layer--3 {
+  top: 52%;
+  right: 32%;
+  width: clamp(160px, 18%, 260px);
+  aspect-ratio: 1 / 1;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  box-shadow: 0 30px 60px -30px rgba(17, 17, 17, 0.25);
+  z-index: 2;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-areas:
+    "eyebrow  card"
+    "headline card"
+    "tags     card"
+    "ctas     card";
+  gap: 1.5rem 3rem;
+  align-items: end;
+  padding-top: clamp(3rem, 10vh, 6rem);
+  min-height: clamp(560px, 80svh, 820px);
+}
+
+.hero__eyebrow {
+  grid-area: eyebrow;
+  color: var(--color-ink-3);
+  align-self: start;
+}
+
+.hero__headline {
+  grid-area: headline;
+  font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+  line-height: 0.98;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 14ch;
+  text-wrap: balance;
+  align-self: start;
+}
+
+.hero__tags {
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-self: start;
+}
+
+.hero__tags .hero-tag {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-ink-2);
+  background-color: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.hero__card {
+  grid-area: card;
+  align-self: end;
+  padding: 1.5rem;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  max-width: 340px;
+  width: 100%;
+  justify-self: end;
+  align-self: end;
+  box-shadow: 0 24px 50px -28px rgba(17, 17, 17, 0.18);
+  margin-bottom: 4rem;
+}
+
+.hero__card-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.hero__card-mail {
+  color: var(--color-ink-2);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.hero__card-mail:hover {
+  color: var(--color-ink);
+}
+
+.hero__ctas {
+  grid-area: ctas;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-self: start;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.hero__cta--primary {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.hero__cta--primary:hover {
+  background-color: var(--color-ink-2);
+}
+
+.hero__cta--ghost {
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+}
+
+.hero__cta--ghost:hover {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink-3);
+  z-index: var(--z-overlay);
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 32px;
+  background-color: var(--color-ink-3);
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 6rem;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "eyebrow"
+      "headline"
+      "tags"
+      "ctas"
+      "card";
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+    min-height: auto;
+  }
+
+  .hero__card {
+    justify-self: stretch;
+    max-width: none;
+    margin-bottom: 0;
+  }
+
+  .hero__layer--2 {
+    width: 45%;
+    top: 8%;
+    right: 4%;
+    opacity: 0.55;
+  }
+
+  .hero__layer--3 {
+    width: 30%;
+    top: 56%;
+    right: 32%;
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 1.5rem 1.25rem 3rem;
+  }
+
+  .hero__layer--2 {
+    width: 55%;
+    top: 6%;
+    right: -10%;
+    opacity: 0.35;
+  }
+
+  .hero__layer--3 {
+    width: 38%;
+    top: 58%;
+    right: 8%;
+    opacity: 0.6;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}

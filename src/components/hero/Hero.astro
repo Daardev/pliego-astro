@@ -1,0 +1,72 @@
+---
+import { HERO_LAYERS, unsplashUrl } from "../../lib/unsplash";
+
+import "./Hero.css";
+
+const layer1 = unsplashUrl(HERO_LAYERS.background, { width: 1800, quality: 85 });
+const layer2 = unsplashUrl(HERO_LAYERS.middle, { width: 1200, quality: 85 });
+const layer3 = unsplashUrl(HERO_LAYERS.foreground, { width: 1000, quality: 85 });
+
+const headlineWords = [
+  "Diseño",
+  "identidades,",
+  "sistemas",
+  "y publicaciones",
+  "que envejecen bien.",
+];
+
+const tags = ["Branding", "Tipografía", "Dirección de arte"];
+---
+
+<script>
+  import "./Hero.ts";
+</script>
+
+<section class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <div class="hero__layer hero__layer--1" data-hero-layer="background">
+      <img src={layer1} alt="" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+    <div class="hero__layer hero__layer--2" data-hero-layer="middle">
+      <img src={layer2} alt="" loading="eager" decoding="async" />
+    </div>
+    <div class="hero__layer hero__layer--3" data-hero-layer="foreground" data-hero-accent>
+      <img src={layer3} alt="" loading="eager" decoding="async" />
+    </div>
+  </div>
+
+  <div class="hero__inner">
+    <span class="hero__eyebrow font-mono-label hero-tag">Pliego · Santiago, CL</span>
+
+    <h1 class="hero__headline font-display" data-split-headline>
+      {headlineWords.join(" ")}
+    </h1>
+
+    <ul class="hero__tags" aria-label="Disciplinas">
+      {tags.map((tag) => (
+        <li class="hero-tag">
+          <span class="font-mono-label">{tag}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hero__ctas">
+      <a href="#trabajos" class="hero__cta hero__cta--primary">Ver trabajos</a>
+      <a href="#contacto" class="hero__cta hero__cta--ghost">Hablemos</a>
+    </div>
+
+    <aside class="hero__card">
+      <p class="hero__card-quote">
+        «Diseñador gráfico. Construyendo marcas desde una mesa llena de libros.»
+      </p>
+      <a class="hero__card-mail font-mono-label" href="mailto:hola@pliego.studio">
+        hola@pliego.studio →
+      </a>
+    </aside>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="font-mono-label">Scroll</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
